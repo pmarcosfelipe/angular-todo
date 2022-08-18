@@ -7,3 +7,16 @@
     <button (click)="remove(todo)">Remove</button>
   </li>
 </ul>
+
+<form [formGroup]="form">
+  <fieldset>
+    <label>Task: </label>
+    <input
+      type="text"
+      placeholder="Title"
+      maxlength="60"
+      formControlName="title"
+    />
+    <button>Save</button>
+  </fieldset>
+</form>
