@@ -1,27 +1,31 @@
 <h1>{{ title }}</h1>
-<ul>
-  <p *ngIf="todos.length === 0"><small>No task today!</small></p>
-  <li *ngFor="let todo of todos">
-    {{ todo.id }} {{ todo.description }}
-    <button *ngIf="!todo.done" (click)="markAsDone(todo)">Done</button>
-    <button *ngIf="todo.done" (click)="markAsUndone(todo)">Redo</button>
-    <button (click)="remove(todo)">Remove</button>
-  </li>
-</ul>
 
-<form [formGroup]="form">
+<form [formGroup]="form" *ngIf="mode == 'add'">
   <fieldset>
-    <label>Task: </label>
-    <input
-      type="text"
-      placeholder="Title"
-      maxlength="60"
-      formControlName="title"
-    />
+    <label>Add your task title below: </label>
+    <input type="text" maxlength="60" formControlName="title" />
     <small
+      class="error"
       *ngIf="form.controls['title'].invalid && !form.controls['title'].pristine"
       >This field should have 3 and 60 characters</small
     >
     <button [disabled]="form.invalid" (click)="add()">Save</button>
   </fieldset>
 </form>
+
+<ul>
+  <p *ngIf="todos.length === 0"><small>No task today!</small></p>
+  <li *ngFor="let todo of todos">
+    <div>{{ todo.id }} {{ todo.description }}</div>
+    <div class="buttons">
+      <button class="done" *ngIf="!todo.done" (click)="markAsDone(todo)">
+        Done
+      </button>
+      <button *ngIf="todo.done" (click)="markAsUndone(todo)">Redo</button>
+      <button class="remove" (click)="remove(todo)">Remove</button>
+    </div>
+  </li>
+</ul>
+
+<button *ngIf="mode == 'list'" (click)="changeMode('add')">New Task</button>
+<button *ngIf="mode == 'add'" (click)="changeMode('list')">Cancel</button>
