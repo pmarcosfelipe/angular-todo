@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { faTrashCan, faCircleCheck } from '@fortawesome/free-regular-svg-icons';
+import { faRotateBack } from '@fortawesome/free-solid-svg-icons';
 import { Todo } from 'src/models/todo.model';
 
 @Component({
@@ -12,6 +14,10 @@ export class AppComponent {
   public todos: Todo[] = [];
   public title: String = 'MY TASKS';
   public form: FormGroup;
+
+  faTrashCan = faTrashCan;
+  faCircleCheck = faCircleCheck;
+  faRotateBack = faRotateBack;
 
   constructor(private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({

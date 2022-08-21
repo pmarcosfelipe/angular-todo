@@ -89,13 +89,13 @@ button.remove:hover {
   border: 1px solid #d34b4b;
 }
 
-button.done {
+button.redo {
   color: #fff;
   background-color: #069a8e;
   border: 1px solid #069a8e;
 }
 
-button.done:hover {
+button.redo:hover {
   background-color: #007676;
   border: 1px solid #007676;
 }

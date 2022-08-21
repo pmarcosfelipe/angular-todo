@@ -18,11 +18,20 @@
   <li *ngFor="let todo of todos">
     <div>{{ todo.id }} {{ todo.description }}</div>
     <div class="buttons">
-      <button class="done" *ngIf="!todo.done" (click)="markAsDone(todo)">
-        Done
+      <button title="Done" *ngIf="!todo.done" (click)="markAsDone(todo)">
+        <fa-icon [icon]="faCircleCheck"></fa-icon>
       </button>
-      <button *ngIf="todo.done" (click)="markAsUndone(todo)">Redo</button>
-      <button class="remove" (click)="remove(todo)">Remove</button>
+      <button
+        class="redo"
+        title="Redo"
+        *ngIf="todo.done"
+        (click)="markAsUndone(todo)"
+      >
+        <fa-icon [icon]="faRotateBack"></fa-icon>
+      </button>
+      <button title="Remove" class="remove" (click)="remove(todo)">
+        <fa-icon [icon]="faTrashCan"></fa-icon>
+      </button>
     </div>
   </li>
 </ul>
